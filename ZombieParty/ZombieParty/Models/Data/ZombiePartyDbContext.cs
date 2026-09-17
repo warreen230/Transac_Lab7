@@ -14,6 +14,8 @@ namespace ZombieParty.Models.Data
         public DbSet<HuntingLog> HuntingLogs { get; set; }
         public DbSet<Weapon> Weapons { get; set; }
 
+        
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //Générer des données de départ

@@ -15,6 +15,7 @@ namespace ZombieParty.Controllers
 
         public IActionResult Index()
         {
+
             return View();
         }
 
