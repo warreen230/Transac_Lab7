@@ -81,5 +81,28 @@ namespace ZombieParty.Controllers
 
             return View(zombieType);
         }
+        public IActionResult Delete(int id)
+        {
+            ZombieType zombieType = new ZombieType();
+            zombieType = _baseDonnees.ZombieTypes.Find(id);
+
+
+            return View(zombieType);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeletePost(int id)
+        {
+            ZombieType? zombieType = _baseDonnees.ZombieTypes.Find(id);
+            if (zombieType == null)
+            {
+                return NotFound();
+            }
+
+            _baseDonnees.ZombieTypes.Remove(zombieType);
+            _baseDonnees.SaveChanges();
+            TempData["Success"] = $"Zombie {zombieType.TypeName} terminated";
+            return RedirectToAction("Index");
+        }
     }
 }
